@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+</head>
+
+<body>
+<center>
+<script language="javascript" type="text/javascript">
+//設定進度條橫坐標到螢幕中央
+var bar_x_i=screen.width/2-153;
+//設定進度條縱坐標到螢幕中央
+var bar_y_i=screen.height/2-50;
+//將讀取進度初始值設定為0
+var percent_i=0;
+//定義關閉進度顯示視窗函數
+function closebar()
+{
+ //關閉進度顯示視窗
+ document.all('bar').style.visibility='hidden';
+}
+//定義顯示進度條函數
+function loadbar(text_str,plus_i,finished)
+{
+ //判斷是否讀取完畢
+ if (finished)
+ {
+  //顯示“讀取完畢”
+  document.all('bar_title').innerText=text_str;
+  //暫停5秒鐘，然後關閉
+  setTimeout('closebar()',5000);
+ }
+ else
+ {
+  //增加載入百分比
+  percent_i+=plus_i;
+   //增加進度條長度
+  for (var i=0,percent_s='';i<percent_i;i++)
+   percent_s+='|';
+  //顯示進度條
+  document.all('bar_load').innerText=percent_s;
+  //顯示提示文字
+  document.all('bar_title').innerText=text_str+' '+percent_i+'%';
+ }
+}
+
+//讀取進度視窗
+var loadtable=""
+loadtable+="<table id='bar' border='2' cellspacing='0' bordercolor='#39435E' bgcolor='#FFFFFF' width='308' height='20' style='position:absolute; top:expression(bar_y_i); left:expression(bar_x_i); font-family:宋體; font-size:9pt'>";
+loadtable+="<tr><td height='12'>";
+loadtable+="<div id='bar_title'>正在讀取網頁......</div>";
+loadtable+="</td></tr><tr><td bgcolor=#3366CC height=8>";
+loadtable+="<div id='bar_load' style='font-family:Arial; font-size:5pt;'>||</div>";
+loadtable+="</td></tr></table>";
+document.write (loadtable);
+</script>
+<script>loadbar('正在讀取網頁正文......',20,false);</script>
+以下是您的網頁正文………………<br>
+………………………………………<br><br>
+<script>loadbar('正在讀取網頁腳本......',20,false);</script>
+這裏是您的網頁腳本………………<br>
+………………………………………<br><br>
+<script>loadbar('隨便寫些什麼..........',20,false);</script>
+這裏是您的網頁五分之二部分……<br>
+………………………………………<br><br>
+<script>loadbar('隨便寫些什麼..........',20,false);</script>
+這裏是您的網頁五分之三部分……<br>
+………………………………………<br><br>
+<script>loadbar('正在下載圖片資訊......',20,false);</script>
+這裏是您的網頁五分之四部分……<br>
+………………………………………<br><br>
+<script>loadbar('讀取完畢！正在初始化......',0,true);</script>
+</center>
+</body>
+
+</html>

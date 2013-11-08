@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>正式開始 - IAT System</title>
+<link rel="stylesheet" type="text/css" href="iat.css">
+</head>
+<script type="text/javascript"> 
+function chkBrowse(){
+	var browser = {
+		version: parseInt(window.navigator.appVersion),
+		isFF: (window.navigator.appName.indexOf("Netscape") != -1),
+		isIE: (window.navigator.appName.indexOf("Microsoft") != -1),
+		st: document.documentElement.scrollTop|| document.body.scrollTop,
+		cw: document.documentElement.clientWidth || document.body.clientWidth,
+		ch: document.documentElement.clientHeight|| document.body.clientHeight
+	};
+
+	if(browser.isIE == false){
+		fullscreen();
+	}
+}
+
+function fullscreen() { 
+	window.moveTo(0, 0);
+	window.resizeTo(screen.availWidth, screen.availHeight); 
+}
+
+function checkKeyEvent(ee)
+{
+     var e = ee ? ee : window.event;
+
+     if(e.keyCode == 116)
+     {
+     	//禁止 F5 的重整 
+     	if(e.preventdefault) {
+     		e.preventdefault(); //FireFox
+     	}else{
+			e.returnValue = false; //IE
+     	}
+     	e.keyCode = 0;
+     }else if (e.keyCode == 13)
+	 {
+	 	location.href = 'iat_block01.php';
+	 }
+}
+     
+function addEvent(obj, eventName, handler)
+{ 
+     if (obj.addEventListener) 
+     obj.addEventListener(eventName, handler, false); //Mozilla 
+     else 
+     obj.attachEvent("on" + eventName, handler); //IE
+}
+addEvent(document, "keydown", checkKeyEvent);
+
+</script> 
+
+<body onload="chkBrowse()" bgcolor="#000000" leftmargin="0" rightmargin="0"
+onkeydown="if (event.keyCode=='116') {event.keyCode=0;event.returnValue=false;} "
+oncontextmenu="return false"
+ ondragstart="return false"
+ onselectstart ="return false"
+ onselect="document.selection.empty()"
+ oncopy="document.selection.empty()"
+ onbeforecopy="return false">
+<font color="#FFFFFF">
+</font>
+<table width="100%" height="100%" border="0">
+  <tr>
+    <td valign="middle">
+    &nbsp;
+    <table width="800" height="600" border="0" bgcolor="#FFFFFF" align="center">
+      <tr>
+        <td height="550" class="IAT_area">
+        <p>接下來的任務中，將要求你對一組呈現的詞語或圖片進行分類。分類要盡可能地快，但同時又盡可能少犯錯。速度太慢或太多錯誤都將會使結果無法解釋。這部分將需要大約5分鐘時間。下面列出了類別標籤以及屬於那些類別的項目。</p>
+        <p>&nbsp;</p>
+        <table border="1" cellspacing="0" style="border-collapse: collapse" bordercolor="#EEEBE8" width="500" align="center" id="main_table_Outborder">
+	<tr>
+		<td>
+            <table width="100%" border="0" align="center" cellpadding="3" cellspacing="0" style="border-collapse: collapse">
+          		<tr bordercolor="#EEEBE8" bgcolor="#EEEBE8"> 
+    				<th width="20%"><p align="right">類別&nbsp;&nbsp;</p></th>
+                    <th width="80%"><p align="left">&nbsp;項目</p></th>
+    			</tr>
+				<tr bordercolor="#EEEBE8" bgcolor="#FFFFFF"> 
+    				<td width="20%" align="right"><p>綠能：</p></td>
+                    <td width="80%" align="left"><p>&nbsp;風力能、太陽能、潮汐能、水力能、地熱能</p></td>
+				</tr>
+                <tr bordercolor="#EEEBE8" bgcolor="#FFFFFF"> 
+    				<td width="20%" align="right"><p>核能：</p></td>
+                    <td width="80%" align="left"><p>&nbsp;反應爐、鈾-238、核四廠、核二廠、核能安全</p></td>
+				</tr>
+                <tr bordercolor="#EEEBE8" bgcolor="#FFFFFF"> 
+    				<td width="20%" align="right"><p>喜好：</p></td>
+                    <td width="80%" align="left"><p>&nbsp;重視、親近、喜愛、珍惜、獲得</p></td>
+				</tr>
+                <tr bordercolor="#EEEBE8" bgcolor="#FFFFFF"> 
+    				<td width="20%" align="right"><p>討厭：</p></td>
+                    <td width="80%" align="left"><p>&nbsp;捨棄、遠離、厭惡、拒絕、排斥</p></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	</table>
+        <p>&nbsp;</p>
+        <p>請注意下面事項：</p>
+        <p>&nbsp;</p>
+        <p>• 把你的食指放在「<font color="#0000FF"><strong>E</strong></font>」鍵和「<font color="#0000FF"><strong>I</strong></font>」鍵上以確保能儘快反應，當中間出現項目可歸類到左邊類別請按「<font color="#0000FF"><strong>E</strong></font>」反之則按「<font color="#0000FF"><strong>I</strong></font>」。 <br />
+          • 上部的兩個標籤將告訴你哪一個詞或圖片應該用哪一個鍵反應。 <br />
+          • 每一個詞語或圖片都可以歸為某一類， 大部分的分類都很容易。 <br />
+          • 如果你反應太慢的話，可能會得不到結果。<font color="#FF0000">請盡可能的快，但請盡量求正確</font>。 <br />
+          • 快速反應可能會導致少量的錯誤，這是正常現象。 <br />
+          • 為了得到最好的結果，避免干擾並且集中注意力。</p></td>
+      </tr>
+      <tr>
+        <td height="50" class="IAT_area"><p align="right">請按Enter繼續</p></td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

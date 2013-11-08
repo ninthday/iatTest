@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JAVA鍵盤事件測試</title>
+</head>
+<script language="JavaScript">
+//預先載入圖片
+imgArray = new Array();
+imgArray[0] = new Image(); 
+imgArray[0].src = "images/Rabbit.jpg"; 
+
+imgArray[1] = new Image(); 
+imgArray[1].src = "images/Penguin.jpg";
+	
+imgArray[2] = new Image(); 
+imgArray[2].src = "images/Monkey.jpg";
+	
+imgArray[3] = new Image(); 
+imgArray[3].src = "images/Frog.jpg";
+
+imgArray[4] = new Image(); 
+imgArray[4].src = "images/Beaver.jpg";
+	
+imgArray[5] = new Image(); 
+imgArray[5].src = "images/Bear.jpg";
+	
+imgArray[6] = new Image(); 
+imgArray[6].src = "images/Alien.jpg";
+
+document.onkeydown = checkKeycode;
+
+function checkKeycode(e) {
+	var keycode;
+	if (window.event) {
+		keycode = window.event.keyCode;
+	}else if (e){
+		keycode = e.which;
+	}
+	
+	if(keycode == 87){
+		nextPic();
+	}else if(keycode == 73){
+		nextPic();
+	}else{
+		void(0);
+	}
+
+}
+
+
+//產生圖片的隨機號碼
+function random_num(n) {
+	if(navigator.appVersion.charAt(0) <=2 && navigator.appName.charAt(0) == "N") 
+	{
+		t = new Date();
+		t = t.getTime(); t += ""; t = t.substring(t.length-3,t.length); t = eval(t)/1000;
+		t = Math.floor(t*n);
+		return t;
+	}else 
+	{
+		t = Math.floor(Math.random()*n);
+		return t;
+	}
+}
+
+var startTime = 0;
+
+
+function setStartTime(){
+	var d1 = new Date();
+	startTime = d1.getTime();
+	count_i = true;
+}
+var count_i = false;
+
+function nextPic(){
+	var d2 = new Date();
+	var endTime = d2.getTime();
+	var responseTime = endTime-startTime;
+	if(count_i == true){
+	alert("Response Time: "+responseTime+" (ms)");
+	}
+	var imgMax =7; //圖片的張數
+	var PictureNum = random_num(imgMax);
+	document.iatImg.src = imgArray[PictureNum].src;
+	if(document.iatImg.complete){//如果圖片已經存在瀏覽器暫存
+		setStartTime();
+	}else{
+		document.iatImg.onload = setStartTime();
+	}
+	
+}
+
+var tomorrowDate = new Date();
+
+tomorrowDate.setTime(tomorrowDate.getTime() + 60*60*24*1000*1);
+
+var expireDay = tomorrowDate.getFullYear().toString() + "/" + (tomorrowDate.getMonth() + 1).toString() + "/" + tomorrowDate.getDate();
+document.write(expireDay);
+
+</script>
+
+
+<body>
+<p><img name="iatImg" src="images/welcome.jpg" border="0" /></p>
+<p><input type="button" value="全螢幕" onclick="javascript:window.open('fullscreen.html','操作視窗','fullscreen=yes,location=no,menubar=no,resizable=no,scrollbars=no,status=no,toolbar=no')" /></p>
+<p>
+  <input type="button" value="全螢幕2" onclick="javascript:window.open('fullscreen2.html','操作視窗','fullscreen=yes,location=no,menubar=no,resizable=no,scrollbars=no,status=no,toolbar=no')" />
+</p>
+</body>
+</html>

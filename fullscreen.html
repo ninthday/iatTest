@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+</head>
+<script type="text/javascript"> 
+function chkBrowse(){
+	var browser = {
+		version: parseInt(window.navigator.appVersion),
+		isFF: (window.navigator.appName.indexOf("Netscape") != -1),
+		isIE: (window.navigator.appName.indexOf("Microsoft") != -1),
+		st: document.documentElement.scrollTop|| document.body.scrollTop,
+		cw: document.documentElement.clientWidth || document.body.clientWidth,
+		ch: document.documentElement.clientHeight|| document.body.clientHeight
+	};
+
+	if(browser.isFF == true){
+		fullscreen();
+	}
+}
+
+function fullscreen() { 
+	window.moveTo(0, 0);
+	window.resizeTo(screen.availWidth, screen.availHeight); 
+}
+
+function checkKeycode(e) {
+	var keycode;
+	if (window.event) {
+		keycode = window.event.keyCode;
+	}else if (e){
+		keycode = e.which;
+	}
+	
+	if (keycode == 13){
+
+		location.href = 'sample.php';
+	}else if (keycode == 116){
+		//禁止 F5 的重整 
+     	if(event.preventdefault) {
+     		event.preventdefault(); //FireFox
+     	}else{
+			event.returnValue = false; //IE
+		}
+		keyCode = 0;
+	}else{
+		void(0);
+	}
+
+}
+
+document.onkeydown = checkKeycode;
+
+</script> 
+
+<body onload="chkBrowse()" bgcolor="#000000" leftmargin="0" rightmargin="0">
+<font color="#FFFFFF">
+</font>
+<table width="100%" height="100%" border="0">
+  <tr>
+    <td valign="middle">
+    &nbsp;
+    <table width="800" height="600" border="0" id="IAT_area" bgcolor="#FFFFFF" align="center">
+      <tr>
+        <td height="550">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="50"><p align="right">請按Enter繼續&nbsp;&nbsp;</p></td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
